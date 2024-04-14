@@ -1,34 +1,41 @@
 import { DefaultTheme } from 'react-native-paper';
 
-const colors = {
-  dark: '#222222',
-  darkGrey: '#26342B',
-  pure: '#FFEDD0',
-  white: '#FFF',
-  grey: '#ABABAB',
-  lightGrey: '#DDDDDD',
-  veryLightAccent: '#E4F1E0',
-  heavyMetal: '#26342B',
-  error: '#FF1F00',
-  brand: {
-    green: '#4CA22F',
-    lightGreen: '#69C64A',
-    blue: '#28BDEC',
-    orange: '#FB9748',
-    yellow: '#FFBD57',
-    translucentGreen: '#F0F7ED',
-  },
+export const COLORS = {
+  primary: '#186B8C',
+
+  secondary: '#4EBF7F',
+
+  orange: '#F29E38',
+
+  darkOrange: '#F28729',
+
+  quicksilver: '#9c9c9c',
+
+  blue: '#55C1D9',
+
+  red: '#F23827',
+
+  danger: '#FF685C',
+
+  dark: '#000',
+
+  lightGray: '#eaeaea',
+
+  lightGrey: '#D9D9D9',
+
+  darkGray: '#6e6969',
+
+  white: '#fff',
+
+  gray: '#EFEFEF',
 };
 
 export const theme = {
   ...DefaultTheme,
   colors: {
     ...DefaultTheme.colors,
-    ...colors,
-    primary: colors.brand.green,
-    secondary: colors.brand.orange,
-    disabled: colors.grey,
-    searchBg: colors.white,
-    success: colors.brand?.green,
+    ...COLORS,
+    primary: COLORS.primary,
+    secondary: COLORS.secondary,
   },
 };

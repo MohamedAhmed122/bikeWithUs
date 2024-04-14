@@ -8,7 +8,11 @@ const Stack = createStackNavigator<EventStackParams>();
 export default function EventStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name="events" component={Events} />
+      <Stack.Screen
+        name="events"
+        component={Events}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name="createEvent" component={CreateEvents} />
     </Stack.Navigator>
   );

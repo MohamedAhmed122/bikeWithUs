@@ -1,12 +1,22 @@
-import { StyleSheet, Text, View } from 'react-native';
-import React from 'react';
+import { FlatList, SafeAreaView } from 'react-native';
+import React, { useState } from 'react';
+import { theme } from '../../theme';
+import { events } from '../../data/events';
+import EventCard from './components/event-card';
+import { ActiveTab, EventTab } from './components/event-tab';
 
 export default function Events() {
+  const [activeTab, setActiveTab] = useState<ActiveTab>(ActiveTab.UP_COMING);
   return (
-    <View>
-      <Text>CreateEvents</Text>
-    </View>
+    <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.white }}>
+      <FlatList
+        ListHeaderComponent={() => (
+          <EventTab activeTab={activeTab} setActiveTab={setActiveTab} />
+        )}
+        data={events}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <EventCard item={item} />}
+      />
+    </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({});
