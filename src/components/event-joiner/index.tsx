@@ -1,8 +1,9 @@
 import { View, Image } from 'react-native';
 import React from 'react';
-import { User } from '../../../types';
+
 import { Text } from 'react-native-paper';
 import { joinerStyles as styles } from './styles';
+import { User } from '../../types';
 
 type Props = {
   joiners: User[];

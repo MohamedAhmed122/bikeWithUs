@@ -1,14 +1,15 @@
 import React from 'react';
 import { Text, View, TouchableOpacity, Image } from 'react-native';
-import { IconContainer } from '../../../components/icon-container';
 import { FontAwesome } from '@expo/vector-icons';
-import { GoingButton } from '../../../components/going-button';
-import { useToggle } from '../../../hooks/useToggle';
-import { theme } from '../../../theme';
-import { EventType } from '../../../types';
+
 import { eventCardStyle as styles } from './styles';
-import ListIcon from '../../../components/list-icon';
-import EventJoiner from './event-joiner';
+import { useToggle } from '../../hooks/useToggle';
+import { EventType } from '../../types';
+import { IconContainer } from '../icon-container';
+import { theme } from '../../theme';
+import ListIcon from '../list-icon';
+import EventJoiner from '../event-joiner';
+import { GoingButton } from '../going-button';
 
 interface Props {
   item: EventType;
