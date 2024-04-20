@@ -5,11 +5,11 @@ import { FontAwesome } from '@expo/vector-icons';
 import { eventCardStyle as styles } from './styles';
 import { useToggle } from '../../hooks/useToggle';
 import { EventType } from '../../types';
-import { IconContainer } from '../icon-container';
 import { theme } from '../../theme';
-import ListIcon from '../list-icon';
+import ListIcon from '../../common/list-icon';
 import EventJoiner from '../event-joiner';
-import { GoingButton } from '../going-button';
+import { GoingButton } from '../../common/going-button';
+import { IconContainer } from '../../common/icon-container';
 
 interface Props {
   item: EventType;

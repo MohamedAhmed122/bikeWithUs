@@ -1,4 +1,4 @@
-import { Image, TouchableOpacity, View } from 'react-native';
+import { Image, Linking, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 
 import { theme } from '../../../theme';
@@ -10,18 +10,27 @@ import { profileHeaderStyles as styles } from './styles';
 import { useNavigation } from '@react-navigation/native';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 
-import {
-  ProfileStackParamsList,
-  ProfileStackParams,
-} from '../../../navigation/profile-stack/type';
+import { ProfileStackParams } from '../../../navigation/profile-stack/type';
+import { TabParams, TabParamsList } from '../../../navigation/params';
+import { ChatStackParams } from '../../../navigation/chat-stack/type';
 
-type Navigation = NativeStackNavigationProp<
-  ProfileStackParamsList,
-  ProfileStackParams
->;
+type Navigation = NativeStackNavigationProp<TabParamsList, TabParams>;
 
 export default function ProfileHeader() {
   const navigation = useNavigation<Navigation>();
+
+  const onNavigateToProfile = () =>
+    navigation.navigate(TabParams.profileStack, {
+      screen: ProfileStackParams.bike,
+      params: { id: '' },
+    });
+
+  const onNavigateToInstagram = () =>
+    Linking.openURL('https://www.instagram.com/mohameddesoukey98/');
+
+  const onNavigateToChat = () =>
+    navigation.navigate(TabParams.chatStack, { screen: ChatStackParams.chat });
+
   return (
     <React.Fragment>
       <Image
@@ -50,17 +59,21 @@ export default function ProfileHeader() {
         <View style={{ flexDirection: 'row', alignItems: 'center' }}>
           <TouchableOpacity
             style={styles.iconContainer}
-            onPress={() =>
-              navigation.navigate(ProfileStackParams.bike, { id: '' })
-            }
+            onPress={onNavigateToProfile}
           >
             <Text variant="headlineMedium"> 🚴🏿‍♂️</Text>
           </TouchableOpacity>
 
-          <TouchableOpacity style={styles.iconContainer}>
+          <TouchableOpacity
+            style={styles.iconContainer}
+            onPress={onNavigateToInstagram}
+          >
             <Entypo name="instagram" size={29} color={theme.colors.primary} />
           </TouchableOpacity>
-          <TouchableOpacity style={styles.iconContainer}>
+          <TouchableOpacity
+            style={styles.iconContainer}
+            onPress={onNavigateToChat}
+          >
             <Ionicons
               name="chatbox-ellipses"
               size={29}

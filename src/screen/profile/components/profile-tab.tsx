@@ -11,7 +11,7 @@ import PhotoTab from './tabs/photo-tab';
 import EventTab from './tabs/event-tab';
 import SavedTab from './tabs/saved-tab';
 import { useState } from 'react';
-import { Tab } from '../../../components/tab';
+import { Tab } from '../../../common/tab';
 
 enum ProfileTabsType {
   PHOTO_TAB = 'PHOTO_TAB',
