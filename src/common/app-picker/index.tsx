@@ -1,48 +1,62 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  FlatList,
-  Modal,
-  TouchableWithoutFeedback,
-  View,
-} from 'react-native';
+import { Button, FlatList, Modal, TouchableWithoutFeedback, View, Text } from 'react-native';
 
-import { Text } from 'react-native-paper';
+// import { Text } from 'react-native-paper';
+import { FontAwesome6 } from '@expo/vector-icons';
 import { Entypo } from '@expo/vector-icons';
 import { PickerItem } from './PickerItem';
 import { PickerItemType } from '../../types/common';
 import styles from './styles';
+import { theme } from '../../theme';
 
 interface Props {
   items: Array<PickerItemType>;
-  selectedItem: PickerItemType;
-  setSelectedItem(item: PickerItemType): void;
+  selectedItems: Array<PickerItemType> | []; // Change to array of selected items
+  setSelectedItems(items: Array<PickerItemType>): void; // Function to set selected items
   placeholder: string;
   inverted?: boolean;
 }
 
 export const AppPicker: React.FC<Props> = ({
   items,
-  selectedItem,
-  setSelectedItem,
+  selectedItems,
+  setSelectedItems,
   placeholder,
   inverted = false,
 }) => {
   const [modalVisible, setModalVisible] = useState(false);
+
+  const handleItemPress = (item: PickerItemType) => {
+    // Toggle selection of the item
+    const isSelected = selectedItems.some((selectedItem) => selectedItem.id === item.id);
+    if (isSelected) {
+      const updatedItems = selectedItems.filter((selectedItem) => selectedItem.id !== item.id);
+      setSelectedItems(updatedItems);
+    } else {
+      setSelectedItems([...selectedItems, item]);
+    }
+  };
+
   return (
     <>
       <TouchableWithoutFeedback onPress={() => setModalVisible(true)}>
         <View style={styles.pickerContainer}>
-          <Entypo name="list" size={24} color="gray" />
+          <FontAwesome6 name="user-circle" size={24} color="gray" />
+
           <View style={styles.colorInputContainer}>
             <Text style={styles.pickerText}>
-              {selectedItem ? selectedItem.label : placeholder}
+              {selectedItems?.length > 0
+                ? selectedItems?.map((item) => item.label).join(', ')
+                : placeholder}
             </Text>
             {inverted && (
               <View
                 style={[
                   styles.colorView,
-                  { backgroundColor: selectedItem?.color },
+                  {
+                    backgroundColor:
+                      selectedItems?.length > 0 ? selectedItems[0]?.color : theme.colors.background,
+                  },
                 ]}
               />
             )}
@@ -52,23 +66,21 @@ export const AppPicker: React.FC<Props> = ({
       </TouchableWithoutFeedback>
       <Modal animationType="slide" visible={modalVisible}>
         <View style={styles.modalContainer}>
-          <Button title="close" onPress={() => setModalVisible(false)} />
+          <View style={{ marginTop: 20 }}>
+            <Button title="close" onPress={() => setModalVisible(false)} />
+          </View>
           <FlatList
-            // horizontal={true}
-            numColumns={4}
-            contentContainerStyle={styles.listContainer}
             data={items}
             keyExtractor={(item) => item.id.toString()}
             renderItem={({ item }) => (
               <PickerItem
                 label={item.label}
                 color={item.color}
+                image={item.image}
                 // @ts-expect-error
                 icon={item.icon}
-                onPress={() => {
-                  setModalVisible(false);
-                  setSelectedItem(item);
-                }}
+                selected={selectedItems?.some((selectedItem) => selectedItem.id === item.id)}
+                onPress={() => handleItemPress(item)}
               />
             )}
           />

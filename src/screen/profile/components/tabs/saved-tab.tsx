@@ -1,4 +1,4 @@
-import { StyleSheet, View } from 'react-native';
+import { View } from 'react-native';
 import React from 'react';
 import { events } from '../../../../data/events';
 import EventCard from '../../../../components/event-card';
@@ -13,5 +13,3 @@ export default function SavedTab() {
     </View>
   );
 }
-
-const styles = StyleSheet.create({});

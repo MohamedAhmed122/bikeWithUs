@@ -1,49 +1,34 @@
 import React from 'react';
 import { FormikContextType, useFormikContext } from 'formik';
 
-import {
-  Text,
-  StyleSheet,
-  TextInputProps,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
-import { AppInput } from '../../app-input';
+import { Text, StyleSheet, TextInputProps, StyleProp, ViewStyle } from 'react-native';
+import { AppInput, AppTextInputProps } from '../../app-input';
 import { theme } from '../../../theme';
+import { InitialValueType } from '../../../types/form';
 
-interface Props extends TextInputProps {
-  name: string;
+interface Props extends AppTextInputProps {
+  name: keyof InitialValueType;
   inputContainerStyle?: StyleProp<ViewStyle>;
 }
 
-export const AppInputField: React.FC<Props> = ({
-  children,
-  name,
-  inputContainerStyle,
-  ...otherProps
-}) => {
+export const AppInputField: React.FC<Props> = ({ name, inputContainerStyle, ...otherProps }) => {
   const {
     setFieldValue,
     values,
     errors,
     setFieldTouched,
     touched,
-  }: FormikContextType<any> = useFormikContext();
+  }: FormikContextType<InitialValueType> = useFormikContext();
   return (
     <>
       <AppInput
         inputContainerStyle={inputContainerStyle}
         onChangeText={(text) => setFieldValue(name, text)}
-        value={values[name]}
+        value={values[name] as string | undefined}
         onBlur={() => setFieldTouched(name)}
         {...otherProps}
-      >
-        {children}
-      </AppInput>
-      {errors[name] && touched[name] && (
-        // @ts-expect-error
-        <Text style={styles.error}>{errors[name]}</Text>
-      )}
+      />
+      {errors[name] && touched[name] && <Text style={styles.error}>{errors[name]}</Text>}
     </>
   );
 };

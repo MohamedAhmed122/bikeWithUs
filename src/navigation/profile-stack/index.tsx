@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Profile from '../../screen/profile';
 import CreateProfile from '../../screen/create-profile';
 import Bike from '../../screen/bike';
+import { theme } from '../../theme';
 
 const Stack = createStackNavigator<ProfileStackParamsList>();
 export default function ProfileStack() {
@@ -14,11 +15,13 @@ export default function ProfileStack() {
         component={Profile}
         options={{
           headerShown: false,
+          cardStyle: { backgroundColor: theme.colors.white },
         }}
       />
       <Stack.Screen
         name={ProfileStackParams.createProfile}
         component={CreateProfile}
+        options={{}}
       />
       <Stack.Screen
         options={{

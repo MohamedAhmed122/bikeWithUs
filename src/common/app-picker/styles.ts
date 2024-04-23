@@ -1,14 +1,15 @@
-import {StyleSheet} from 'react-native';
-import {COLORS} from '@Styles/colors';
+import { theme } from './../../theme/index';
+import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
   container: {
-    width: 70,
-    height: 70,
+    width: '90%',
+    marginLeft: '5%',
+    height: 60,
     borderRadius: 35,
     marginHorizontal: 10,
     alignItems: 'center',
-    justifyContent: 'center',
+    paddingLeft: 15,
     flexDirection: 'row',
     marginTop: 25,
     shadowColor: '#000',
@@ -20,6 +21,11 @@ export default StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
+  image: {
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+  },
   text: {
     marginHorizontal: 10,
     textAlign: 'center',
@@ -27,8 +33,8 @@ export default StyleSheet.create({
 
   pickerContainer: {
     width: '95%',
-    marginLeft: 5,
-    backgroundColor: COLORS.lightGray,
+    marginLeft: '2.5%',
+    backgroundColor: theme.colors.lightGray,
     height: 50,
     borderRadius: 25,
     padding: 10,
@@ -39,6 +45,8 @@ export default StyleSheet.create({
   },
   pickerText: {
     marginLeft: 10,
+    color: theme.colors.darkGray,
+    fontSize: 18,
   },
   modalContainer: {
     marginTop: 30,

@@ -1,12 +1,3 @@
-import { View } from 'react-native';
-import { Button, Text, Paragraph } from 'react-native-paper';
-import {
-  TabsProvider,
-  Tabs,
-  TabScreen,
-  useTabIndex,
-  useTabNavigation,
-} from 'react-native-paper-tabs';
 import PhotoTab from './tabs/photo-tab';
 import EventTab from './tabs/event-tab';
 import SavedTab from './tabs/saved-tab';

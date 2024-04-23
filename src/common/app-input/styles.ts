@@ -6,7 +6,7 @@ const styles = ScaledSheet.create({
   container: {
     width: '95%',
     marginLeft: '2.5%',
-    backgroundColor: theme.colors.darkGray,
+    backgroundColor: theme.colors.gray,
     height: 50,
     borderRadius: '25@s',
     padding: '10@s',

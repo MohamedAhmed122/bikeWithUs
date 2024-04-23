@@ -1,12 +1,13 @@
 import React from 'react';
 import { Formik } from 'formik';
+import { InitialValueType } from '../../../types/form';
 // import {initialFormValues} from '@Types/Form';
 
 interface Props {
-  initialValues: any;
+  initialValues: InitialValueType;
   validationSchema: any;
-  onSubmit: (values: any) => void;
-  children: React.FC;
+  onSubmit: (values: InitialValueType) => void;
+  children: JSX.Element;
 }
 
 export const AppForm: React.FC<Props> = ({
@@ -16,11 +17,7 @@ export const AppForm: React.FC<Props> = ({
   onSubmit,
 }) => {
   return (
-    <Formik
-      initialValues={initialValues}
-      validationSchema={validationSchema}
-      onSubmit={onSubmit}
-    >
+    <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
       {({}) => <>{children}</>}
     </Formik>
   );
