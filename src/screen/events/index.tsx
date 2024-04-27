@@ -7,10 +7,7 @@ import { events } from '../../data/events';
 import { Tab } from '../../common/tab';
 import FixedButton from '../../common/fixed-button';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
-import {
-  EventStackParams,
-  EventStackParamsList,
-} from '../../navigation/event-stack/type';
+import { EventStackParams, EventStackParamsList } from '../../navigation/event-stack/type';
 import { useNavigation } from '@react-navigation/native';
 
 const tabs = [
@@ -23,17 +20,16 @@ const tabs = [
     tabName: 'PAST',
   },
 ];
-type Navigation = NativeStackNavigationProp<
-  EventStackParamsList,
-  EventStackParams
->;
+type Navigation = NativeStackNavigationProp<EventStackParamsList, EventStackParams>;
 
 export default function Events() {
   const [activeTab, setActiveTab] = useState(tabs[0].tabKey);
   const navigation = useNavigation<Navigation>();
 
-  const onCreateButtonPressed = () =>
-    navigation.navigate(EventStackParams.createEvent);
+  const onCreateButtonPressed = () => navigation.navigate(EventStackParams.createEvent);
+
+  const onEventCardPressed = (id: string) =>
+    navigation.navigate(EventStackParams.eventDetail, { id });
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: theme.colors.white }}>
@@ -43,7 +39,9 @@ export default function Events() {
         )}
         data={events}
         keyExtractor={(item) => item.id}
-        renderItem={({ item }) => <EventCard item={item} />}
+        renderItem={({ item }) => (
+          <EventCard item={item} onEventCardPressed={() => onEventCardPressed(item.id)} />
+        )}
       />
       <FixedButton onPress={onCreateButtonPressed} />
     </SafeAreaView>

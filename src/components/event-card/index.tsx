@@ -13,31 +13,26 @@ import { IconContainer } from '../../common/icon-container';
 
 interface Props {
   item: EventType;
+  onEventCardPressed?(): void;
 }
 
-export default function EventCard({ item }: Props) {
+export default function EventCard({ item, onEventCardPressed }: Props) {
   const { value: isGoing, toggleButton: toggleGoingButton } = useToggle();
   const { value: isWatched, toggleButton: toggleWatchButton } = useToggle();
 
-  const { user, description, title, address, date, id, joined, joinedUsers } =
-    item;
+  const { user, description, title, address, date, id, joined, joinedUsers } = item;
 
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={onEventCardPressed}>
       <View style={styles.main}>
         <View style={styles.flex}>
-          <Image
-            resizeMode="cover"
-            style={styles.avatar}
-            source={{ uri: user.image }}
-          />
+          <Image resizeMode="cover" style={styles.avatar} source={{ uri: user.image }} />
           <Text style={styles.username}> {user.name}</Text>
         </View>
         <IconContainer
           style={styles.iconContainer}
           onPress={toggleWatchButton}
-          color={isWatched ? theme.colors.orange : theme.colors.lightGrey}
-        >
+          color={isWatched ? theme.colors.orange : theme.colors.lightGrey}>
           <FontAwesome name="bookmark" size={22} color={theme.colors.white} />
         </IconContainer>
       </View>
@@ -49,7 +44,7 @@ export default function EventCard({ item }: Props) {
         <ListIcon listText={date} icon="calendar-month" />
         <ListIcon listText={address} icon="location-pin" />
       </View>
-      <EventJoiner joiners={joinedUsers} joiners_count={joined} />
+      <EventJoiner joiners={joinedUsers} joinedCount={joined} />
       <View style={styles.likeContainer}>
         <GoingButton isGoing={isGoing} toggleButton={toggleGoingButton} />
       </View>

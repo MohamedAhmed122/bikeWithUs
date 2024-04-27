@@ -10,17 +10,23 @@ import ReportStack from './report-stack';
 import { TabBarIcon } from '../components/tab-bar-icon';
 import { Ionicons } from '@expo/vector-icons';
 import { TabParams } from './params';
+import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
+import { EventStackParams } from './event-stack/type';
 
 export const tabs = [
   {
     id: 1,
     component: EventStack,
     name: TabParams.eventStack,
-    options: {
-      title: 'EVENTS',
-      tabBarIcon: ({ color }: { color: string }) => (
-        <MaterialIcons name="event-note" size={scale(27)} color={color} />
-      ),
+    options: (route: any) => {
+      const hideTab = getFocusedRouteNameFromRoute(route.route) === EventStackParams.eventDetail;
+      return {
+        title: 'EVENTS',
+        tabBarStyle: { display: hideTab ? 'none' : 'flex' },
+        tabBarIcon: ({ color }: { color: string }) => (
+          <MaterialIcons name="event-note" size={scale(27)} color={color} />
+        ),
+      };
     },
   },
   {

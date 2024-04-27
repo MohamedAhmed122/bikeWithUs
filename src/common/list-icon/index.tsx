@@ -1,11 +1,4 @@
-import {
-  StyleProp,
-  StyleSheet,
-  TextStyle,
-  View,
-  ViewProps,
-  ViewStyle,
-} from 'react-native';
+import { StyleProp, StyleSheet, TextStyle, View, ViewProps, ViewStyle } from 'react-native';
 import React from 'react';
 import { MaterialIcons } from '@expo/vector-icons';
 import { Text } from 'react-native-paper';
@@ -18,6 +11,7 @@ interface Props extends Omit<ViewProps, 'style'> {
   color?: string;
   iconStyle?: StyleProp<TextStyle>;
   containerStyle?: StyleProp<ViewStyle>;
+  textStyle?: StyleProp<TextStyle>;
 }
 
 export default function ListIcon({
@@ -26,13 +20,14 @@ export default function ListIcon({
   size = 24,
   color = theme.colors.darkGray,
   iconStyle,
+  textStyle,
   containerStyle,
   ...otherProps
 }: Props) {
   return (
-    <View {...otherProps} style={[styles.container, containerStyle]}>
+    <View style={[styles.container, containerStyle]} {...otherProps}>
       <MaterialIcons style={iconStyle} size={size} color={color} name={icon} />
-      <Text style={styles.text}>{listText}</Text>
+      <Text style={[styles.text, textStyle]}>{listText}</Text>
     </View>
   );
 }

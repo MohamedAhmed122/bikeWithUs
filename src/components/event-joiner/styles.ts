@@ -28,10 +28,27 @@ export const joinerStyles = ScaledSheet.create({
     marginLeft: '18@ms',
   },
   avatar: {
+    zIndex: 20,
     width: '60@ms',
     height: '60@ms',
     borderRadius: '30@ms',
     borderColor: theme.colors.orange,
     borderWidth: 3,
+  },
+  showMoreContainer: {
+    zIndex: -1,
+    marginLeft: '-12@ms',
+    marginTop: '5@mvs',
+  },
+  joinerFooter: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    marginRight: '20@ms',
+    marginTop: '12@mvs',
+  },
+  joinerFooterText: {
+    marginLeft: '60@ms',
+    color: theme.colors.darkGray,
   },
 });
