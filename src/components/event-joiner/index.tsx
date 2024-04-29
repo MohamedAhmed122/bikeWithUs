@@ -12,14 +12,14 @@ type Props = {
   joinedCount: number;
   showSeeAll?: boolean;
   joinersCounterDisplay?: number;
-  JoinerContainerStyle?: StyleProp<ViewStyle>;
+  joinerContainerStyle?: StyleProp<ViewStyle>;
 };
 
 export default function EventJoiner({
   joiners,
   joinedCount,
   showSeeAll = false,
-  JoinerContainerStyle,
+  joinerContainerStyle,
   joinersCounterDisplay = 5,
 }: Props) {
   const [joinersCountDisplay, setJoinersCountDisplay] = useState(joinersCounterDisplay);
@@ -40,7 +40,7 @@ export default function EventJoiner({
         </View>
       )}
       <ScrollView
-        contentContainerStyle={[styles.joinContainer, JoinerContainerStyle]}
+        contentContainerStyle={[styles.joinContainer, joinerContainerStyle]}
         horizontal
         showsHorizontalScrollIndicator={false}>
         <View style={styles.avatarContainer}>
@@ -49,13 +49,13 @@ export default function EventJoiner({
               key={item.id}
               source={{ uri: item.image }}
               resizeMode="cover"
-              style={[styles.avatar, { marginLeft: index !== 0 ? -15 : 0 }]}
+              style={[styles.avatar, { marginLeft: index !== 0 ? -15 : 0, width: 45, height: 45 }]}
             />
           ))}
         </View>
         {joiners.length > joinersCountDisplay && (
           <Pressable onPress={onShowMore} style={styles.showMoreContainer}>
-            <AntDesign name="pluscircle" size={45} color={theme.colors.white} />
+            <AntDesign name="pluscircle" size={35} color={theme.colors.white} />
           </Pressable>
         )}
       </ScrollView>
@@ -64,11 +64,13 @@ export default function EventJoiner({
           <Text style={styles.joinerFooterText}>
             <Text style={{ fontWeight: '800' }}>{joinedCount}</Text> People are going
           </Text>
-          <Pressable onPress={onShowMore} style={styles.showMoreContainer}>
-            <Text style={{ color: theme.colors.darkGray }}>
-              {joinersCountDisplay > joinersCounterDisplay ? 'Hide' : 'See all'}
-            </Text>
-          </Pressable>
+          {joinersCountDisplay > joinersCounterDisplay && (
+            <Pressable onPress={onShowMore} style={styles.showMoreText}>
+              <Text style={{ color: theme.colors.darkGray }}>
+                {joinersCountDisplay > joinersCounterDisplay ? 'Hide' : 'See all'}
+              </Text>
+            </Pressable>
+          )}
         </View>
       )}
     </View>

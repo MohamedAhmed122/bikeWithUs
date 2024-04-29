@@ -16,21 +16,14 @@ export const eventCardStyle = ScaledSheet.create({
     shadowRadius: 3.84,
     elevation: 5,
   },
-  flex: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
   main: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
   },
-  iconContainer: {
-    position: 'absolute',
-    right: 0,
-    marginRight: '10@s',
-    width: 45,
-    height: 45,
+  flex: {
+    flexDirection: 'row',
+    alignItems: 'center',
   },
   avatar: {
     width: '60@s',
@@ -41,6 +34,13 @@ export const eventCardStyle = ScaledSheet.create({
   username: {
     fontSize: 21,
     color: theme.colors.primary,
+  },
+  iconContainer: {
+    position: 'absolute',
+    right: 0,
+    marginRight: '10@s',
+    width: 45,
+    height: 45,
   },
   desc: {
     fontSize: 18,

@@ -2,20 +2,25 @@ import { Dimensions, View, Text } from 'react-native';
 import React from 'react';
 
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
-import { theme } from '../../../theme';
-import { AppButton } from '../../../common/app-button';
+import { theme } from '../../../../theme';
+import { AppButton } from '../../../../common/app-button';
 import { ScaledSheet } from 'react-native-size-matters';
+import FeedInBox from '../feed/feed-inbox';
+import { EventDetailTabsType } from '../..';
 
 const { width } = Dimensions.get('window');
 
-export default function EventFooter() {
+export default function EventFooter({ activeTab }: { activeTab: string }) {
   const { bottom } = useSafeAreaInsets();
   return (
     <View style={[{ height: 50 + bottom }, styles.container]}>
-      <View style={styles.row}>
-        <Text style={[styles.text]}>Be Adventurous 🚴🏿‍♂️</Text>
-        <AppButton title="Join" onPress={() => {}} style={styles.button} />
-      </View>
+      {activeTab === EventDetailTabsType.DETAILS && (
+        <View style={styles.row}>
+          <Text style={[styles.text]}>Be Adventurous 🚴🏿‍♂️</Text>
+          <AppButton title="Join" onPress={() => {}} style={styles.button} />
+        </View>
+      )}
+      {activeTab === EventDetailTabsType.FEED && <FeedInBox />}
     </View>
   );
 }

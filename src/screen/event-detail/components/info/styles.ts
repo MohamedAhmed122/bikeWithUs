@@ -1,16 +1,16 @@
 import { ScaledSheet } from 'react-native-size-matters';
-import { theme } from '../../../theme';
+import { theme } from '../../../../theme';
 
 export const coverStyles = ScaledSheet.create({
   background: {
     overflow: 'hidden',
     width: '100%',
-    height: '280@mvs',
+    height: '200@mvs',
   },
   counterContainer: {
     flex: 1,
     alignItems: 'center',
-    marginTop: '50@mvs',
+    marginTop: '15@mvs',
   },
   counterText: {
     textAlign: 'center',

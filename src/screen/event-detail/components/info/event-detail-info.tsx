@@ -4,10 +4,10 @@ import React from 'react';
 import { Avatar, Text } from 'react-native-paper';
 
 import { FontAwesome6 } from '@expo/vector-icons';
-import { theme } from '../../../theme';
-import { events } from '../../../data/events';
+import { theme } from '../../../../theme';
+import { events } from '../../../../data/events';
 import { infoStyle as styles } from './styles';
-import ListIcon from '../../../common/list-icon';
+import ListIcon from '../../../../common/list-icon';
 
 const item = events[0];
 

@@ -29,26 +29,29 @@ export const joinerStyles = ScaledSheet.create({
   },
   avatar: {
     zIndex: 20,
-    width: '60@ms',
-    height: '60@ms',
-    borderRadius: '30@ms',
+    width: '45@ms',
+    height: '45@ms',
+    borderRadius: '27@ms',
     borderColor: theme.colors.orange,
     borderWidth: 3,
   },
   showMoreContainer: {
     zIndex: -1,
     marginLeft: '-12@ms',
-    marginTop: '5@mvs',
+    marginTop: '10@mvs',
   },
   joinerFooter: {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-between',
-    marginRight: '20@ms',
+    marginHorizontal: '20@ms',
     marginTop: '12@mvs',
   },
   joinerFooterText: {
-    marginLeft: '60@ms',
+    marginLeft: '35@ms',
     color: theme.colors.darkGray,
+  },
+  showMoreText: {
+    marginRight: '20@ms',
   },
 });
