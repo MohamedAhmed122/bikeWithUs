@@ -1,19 +1,20 @@
-import React from 'react';
-
-import { scale } from 'react-native-size-matters';
 import { MaterialIcons } from '@expo/vector-icons';
-import EventStack from './event-stack';
-import ProfileStack from './profile-stack';
-import MapStack from './map-stack';
-import ChatStack from './chat-stack';
-import ReportStack from './report-stack';
-import { TabBarIcon } from '../components/tab-bar-icon';
-import { Ionicons } from '@expo/vector-icons';
-import { TabParams } from './params';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
-import { EventStackParams } from './event-stack/type';
-import { ChatStackParams } from './chat-stack/type';
+import React from 'react';
+import { scale } from 'react-native-size-matters';
 
+import ChatStack from './chat-stack';
+import EventStack from './event-stack';
+import { EventStackParams } from './event-stack/type';
+import MapStack from './map-stack';
+import { TabParams } from './params';
+import ProfileStack from './profile-stack';
+import ReportStack from './report-stack';
+import { ChatIcon } from '../assets/svg/chat-icon';
+import UserIcon from '../assets/svg/user-icon';
+import { TabBarIcon } from '../components/tab-bar-icon';
+
+// TODO: add ts
 export const tabs = [
   {
     id: 1,
@@ -62,9 +63,7 @@ export const tabs = [
       const hideTab = getFocusedRouteNameFromRoute(route.route) === ChatStackParams.chat;
       return {
         title: 'CHAT',
-        tabBarIcon: ({ color }: { color: string }) => (
-          <Ionicons name="chatbox-ellipses" size={29} color={color} />
-        ),
+        tabBarIcon: ({ color }: { color: string }) => <ChatIcon color={color} />,
         tabBarStyle: { display: hideTab ? 'none' : 'flex' },
       };
     },
@@ -76,9 +75,7 @@ export const tabs = [
     name: TabParams.profileStack,
     options: {
       title: 'PROFILE',
-      tabBarIcon: ({ color }: { color: string }) => (
-        <MaterialIcons name="person-pin" size={scale(29)} color={color} />
-      ),
+      tabBarIcon: ({ color }: { color: string }) => <UserIcon size={scale(22)} color={color} />,
     },
   },
 ];
