@@ -13,6 +13,7 @@ import ReportStack from './report-stack';
 import { ChatIcon } from '../assets/svg/chat-icon';
 import UserIcon from '../assets/svg/user-icon';
 import { TabBarIcon } from '../components/tab-bar-icon';
+import { ChatStackParams } from './chat-stack/type';
 
 // TODO: add ts
 export const tabs = [
