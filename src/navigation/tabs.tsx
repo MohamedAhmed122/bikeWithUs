@@ -12,6 +12,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { TabParams } from './params';
 import { getFocusedRouteNameFromRoute } from '@react-navigation/native';
 import { EventStackParams } from './event-stack/type';
+import { ChatStackParams } from './chat-stack/type';
 
 export const tabs = [
   {
@@ -56,13 +57,19 @@ export const tabs = [
     id: 4,
     component: ChatStack,
     name: TabParams.chatStack,
-    options: {
-      title: 'CHAT',
-      tabBarIcon: ({ color }: { color: string }) => (
-        <Ionicons name="chatbox-ellipses" size={29} color={color} />
-      ),
+
+    options: (route: any) => {
+      const hideTab = getFocusedRouteNameFromRoute(route.route) === ChatStackParams.chat;
+      return {
+        title: 'CHAT',
+        tabBarIcon: ({ color }: { color: string }) => (
+          <Ionicons name="chatbox-ellipses" size={29} color={color} />
+        ),
+        tabBarStyle: { display: hideTab ? 'none' : 'flex' },
+      };
     },
   },
+
   {
     id: 5,
     component: ProfileStack,

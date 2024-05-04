@@ -1,4 +1,4 @@
-import { ChatList } from '../types/chat';
+import { ChatList, Message } from '../types/chat';
 
 export const chatData: ChatList[] = [
   {
@@ -69,7 +69,7 @@ export const chatData: ChatList[] = [
     name: 'Hanna Montana',
     image:
       'https://media.istockphoto.com/id/1371797889/vector/young-smiling-man-avatar-3d-vector-people-character-illustration-cartoon-minimal-style-3d.jpg?s=612x612&w=0&k=20&c=WykJb6hyEUv8T9k86g-LG9u980sEwqK8FG1m1tXgnSI=',
-    lastMsg: { photo: 'pic456.jpg' },
+    lastMsg: { msg: 'See you there, to fuck the shit of you, and send nodes you little bitch' },
     unreadMsgs: 7,
     lastMsgAt: new Date('2024-04-30T11:05:00'),
   },
@@ -91,4 +91,118 @@ export const chatData: ChatList[] = [
     unreadMsgs: 0,
     lastMsgAt: new Date('2024-04-29T20:10:00'),
   },
+];
+
+export const messages: Message[] = [
+  {
+    id: 'm1',
+    receiver: true,
+    sender: false,
+    msg: { msg: 'Hello, how are you?' },
+    date: new Date('2024-04-30T12:00:00'),
+    user: {
+      id: 'u1',
+      name: 'Alice Johnson',
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp12fKlOpYGpORGIiD5rJGvcMx9Z-UCHXYbGGxd4YvFw&',
+    },
+  },
+  {
+    id: 'm120',
+    receiver: true,
+    sender: false,
+    msg: { msg: 'Hello, how are you? bro' },
+    date: new Date('2024-04-30T12:00:00'),
+    user: {
+      id: 'u1',
+      name: 'Alice Johnson',
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp12fKlOpYGpORGIiD5rJGvcMx9Z-UCHXYbGGxd4YvFw&',
+    },
+  },
+  {
+    id: 'm1200',
+    receiver: true,
+    sender: false,
+    msg: { msg: 'Hello, how are you? bro' },
+    date: new Date('2024-04-30T12:00:00'),
+    user: {
+      id: 'u1',
+      name: 'Alice Johnson',
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp12fKlOpYGpORGIiD5rJGvcMx9Z-UCHXYbGGxd4YvFw&',
+    },
+  },
+  {
+    id: 'm2',
+    receiver: false,
+    sender: true,
+    msg: { msg: "I'm good, thanks! And you?" },
+    date: new Date('2024-04-30T12:01:00'),
+    user: {
+      id: 'u2',
+      name: 'Bob Smith',
+      image:
+        'https://media.istockphoto.com/id/1371797889/vector/young-smiling-man-avatar-3d-vector-people-character-illustration-cartoon-minimal-style-3d.jpg?s=612x612&w=0&k=20&c=WykJb6hyEUv8T9k86g-LG9u980sEwqK8FG1m1tXgnSI=',
+    },
+  },
+  {
+    id: 'm20',
+    receiver: false,
+    sender: true,
+    msg: { msg: 'Sunny day bro' },
+    date: new Date('2024-04-30T12:01:00'),
+    user: {
+      id: 'u2',
+      name: 'Bob Smith',
+      image:
+        'https://media.istockphoto.com/id/1371797889/vector/young-smiling-man-avatar-3d-vector-people-character-illustration-cartoon-minimal-style-3d.jpg?s=612x612&w=0&k=20&c=WykJb6hyEUv8T9k86g-LG9u980sEwqK8FG1m1tXgnSI=',
+    },
+  },
+  // Repeating pattern for simplicity
+  {
+    id: 'm3',
+    receiver: true,
+    sender: false,
+    msg: { msg: 'Doing great, thanks for asking!' },
+    date: new Date('2024-04-31T12:02:00'),
+    user: {
+      id: 'u1',
+      name: 'Alice Johnson',
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp12fKlOpYGpORGIiD5rJGvcMx9Z-UCHXYbGGxd4YvFw&',
+    },
+  },
+  {
+    id: 'm4',
+    receiver: false,
+    sender: true,
+    msg: {
+      msg: 'Doing great, like your unfailthy mother:)) smdl;svmdlksmdvlskndvmlksdnvklsnvd lkdsnvklsdvn!',
+    },
+    date: new Date('2024-04-31T12:03:00'),
+    user: {
+      id: 'u2',
+      name: 'Bob Smith',
+      image:
+        'https://media.istockphoto.com/id/1371797889/vector/young-smiling-man-avatar-3d-vector-people-character-illustration-cartoon-minimal-style-3d.jpg?s=612x612&w=0&k=20&c=WykJb6hyEUv8T9k86g-LG9u980sEwqK8FG1m1tXgnSI=',
+    },
+  },
+  // Additional objects up to 20 entries
+  {
+    id: 'm5',
+    receiver: true,
+    sender: false,
+    msg: {
+      msg: "Let's meet tomorrow if you're free - Let's meet tomorrow if you're free Let's meet tomorrow if you're free Let's meet tomorrow if you're free",
+    },
+    date: new Date('2024-04-33T12:04:00'),
+    user: {
+      id: 'u1',
+      name: 'Alice Johnson',
+      image:
+        'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQp12fKlOpYGpORGIiD5rJGvcMx9Z-UCHXYbGGxd4YvFw&',
+    },
+  },
+  // ... Fill in more messages as needed up to 20
 ];

@@ -8,12 +8,14 @@ export interface AppTextInputProps extends TextInputProps {
   inputContainerStyle?: StyleProp<ViewStyle>;
   rightIconName?: keyof typeof AntDesign.glyphMap;
   leftIconName?: keyof typeof AntDesign.glyphMap;
+  LeftIcon?: React.FC;
 }
 
 export const AppInput: React.FC<AppTextInputProps> = ({
   inputContainerStyle,
   rightIconName,
-  leftIconName,
+  LeftIcon,
+  // leftIconName,
   ...otherProps
 }) => {
   return (
@@ -26,7 +28,8 @@ export const AppInput: React.FC<AppTextInputProps> = ({
         style={styles.inputText}
         placeholderTextColor={theme.colors.darkGray}
       />
-      {leftIconName && <AntDesign name={leftIconName} color={theme.colors.darkGray} size={18} />}
+      {/* {leftIconName && <AntDesign name={leftIconName} color={theme.colors.darkGray} size={18} />} */}
+      {LeftIcon && <LeftIcon />}
     </View>
   );
 };
