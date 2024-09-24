@@ -10,7 +10,7 @@ import { AppDatePickerField } from '../../common/form/app-date-picker-field';
 import { AppTimePickerField } from '../../common/form/app-time-picker-field';
 import { AppSubmitButton } from '../../common/form/app-submit-button';
 
-export default function CreateEvents() {
+export default function CreateAsk() {
   const [selectedItems, setSelectedItems] = useState<PickerItemType[]>([]);
 
   return (
@@ -32,16 +32,6 @@ export default function CreateEvents() {
         <React.Fragment>
           <AppInputField name="title" placeholder="Title" />
           <AppInputField name="desc" placeholder="Description" />
-          <AppInputField name="locations" placeholder="Location" />
-          <AppInputField name="maxNumber" placeholder="Max number" />
-          <AppPicker
-            selectedItems={selectedItems}
-            setSelectedItems={setSelectedItems}
-            items={mentions}
-            placeholder="Mention your Friends"
-          />
-          <AppDatePickerField />
-          <AppTimePickerField />
           <AppSubmitButton title="Submit" />
         </React.Fragment>
       </AppForm>

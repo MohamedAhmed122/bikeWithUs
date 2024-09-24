@@ -5,24 +5,16 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import Reanimated, {
-  useAnimatedStyle,
-  useSharedValue,
-  withSpring,
-} from 'react-native-reanimated';
+import Reanimated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 export interface PressableScaleProps extends TouchableWithoutFeedbackProps {
   activeScale?: number;
 }
 
-const ReanimatedTouchableWithoutFeedback = Reanimated.createAnimatedComponent(
-  TouchableWithoutFeedback,
-);
+const ReanimatedTouchableWithoutFeedback =
+  Reanimated.createAnimatedComponent(TouchableWithoutFeedback);
 
-export const PressableScale: React.FC<PressableScaleProps> = ({
-  children,
-  ...props
-}) => {
+export const PressableScale: React.FC<PressableScaleProps> = ({ children, ...props }) => {
   const {
     activeScale = 0.95,
     style,
@@ -38,7 +30,7 @@ export const PressableScale: React.FC<PressableScaleProps> = ({
     () => ({
       transform: [{ scale: withSpring(isPressedIn.value ? activeScale : 1) }],
     }),
-    [activeScale, isPressedIn],
+    [activeScale, isPressedIn]
   );
 
   const onPressIn = (event: GestureResponderEvent) => {
@@ -57,8 +49,7 @@ export const PressableScale: React.FC<PressableScaleProps> = ({
       onPressIn={onPressIn}
       onPressOut={onPressOut}
       style={touchableStyle}
-      {...restProps}
-    >
+      {...restProps}>
       <View style={style}>{children}</View>
     </ReanimatedTouchableWithoutFeedback>
   );

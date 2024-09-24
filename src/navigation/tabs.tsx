@@ -9,11 +9,12 @@ import { EventStackParams } from './event-stack/type';
 import MapStack from './map-stack';
 import { TabParams } from './params';
 import ProfileStack from './profile-stack';
-import ReportStack from './report-stack';
+import AskStack from './ask-stack';
 import { ChatIcon } from '../assets/svg/chat-icon';
 import UserIcon from '../assets/svg/user-icon';
 import { TabBarIcon } from '../components/tab-bar-icon';
 import { ChatStackParams } from './chat-stack/type';
+import { AskStackParams } from './ask-stack/type';
 
 // TODO: add ts
 export const tabs = [
@@ -34,13 +35,17 @@ export const tabs = [
   },
   {
     id: 2,
-    component: ReportStack,
-    name: TabParams.reportStack,
-    options: {
-      title: 'REPORT',
-      tabBarIcon: ({ color }: { color: string }) => (
-        <MaterialIcons name="article" size={scale(27)} color={color} />
-      ),
+    component: AskStack,
+    name: TabParams.askStack,
+    options: (route: any) => {
+      const hideTab = getFocusedRouteNameFromRoute(route.route) === AskStackParams.askDetail;
+      return {
+        title: 'REPORT',
+        tabBarStyle: { display: hideTab ? 'none' : 'flex' },
+        tabBarIcon: ({ color }: { color: string }) => (
+          <MaterialIcons name="article" size={scale(27)} color={color} />
+        ),
+      };
     },
   },
 

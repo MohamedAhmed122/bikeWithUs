@@ -17,3 +17,11 @@ export type User = {
   username: string;
   image: string;
 };
+
+export type AskType = {
+  id: string;
+  title: string;
+  user: User;
+  description: string;
+  date: string;
+};

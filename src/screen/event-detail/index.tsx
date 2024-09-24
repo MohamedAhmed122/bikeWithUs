@@ -1,4 +1,4 @@
-import { ScrollView, View } from 'react-native';
+import { ScrollView } from 'react-native';
 import React, { useState } from 'react';
 
 import { events } from '../../data/events';
@@ -34,6 +34,7 @@ const tabs = [
 ];
 
 type Navigation = NativeStackNavigationProp<TabParamsList, TabParams.profileStack>;
+
 export default function EventDetail({ navigation }: { navigation: Navigation }) {
   const [activeTab, setActiveTab] = useState<string>(tabs[0].tabKey);
   return (

@@ -13,15 +13,9 @@ export default function Router() {
         headerShown: false,
         tabBarInactiveTintColor: theme.colors.lightGrey,
         tabBarActiveTintColor: theme.colors.primary,
-      }}
-    >
+      }}>
       {tabs.map((tab) => (
-        <Tab.Screen
-          key={tab.id}
-          name={tab.name}
-          component={tab.component}
-          options={tab.options}
-        />
+        <Tab.Screen key={tab.id} name={tab.name} component={tab.component} options={tab.options} />
       ))}
     </Tab.Navigator>
   );

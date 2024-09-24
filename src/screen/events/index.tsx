@@ -43,7 +43,7 @@ export default function Events() {
           <EventCard item={item} onEventCardPressed={() => onEventCardPressed(item.id)} />
         )}
       />
-      {/* <FixedButton onPress={onCreateButtonPressed} /> */}
+      <FixedButton onPress={onCreateButtonPressed} />
     </SafeAreaView>
   );
 }
