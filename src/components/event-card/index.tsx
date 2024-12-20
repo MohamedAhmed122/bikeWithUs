@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View, TouchableOpacity, Image } from 'react-native';
+import { Text, View, TouchableOpacity, Image, Pressable } from 'react-native';
 import { FontAwesome } from '@expo/vector-icons';
 
 import { eventCardStyle as styles } from './styles';
@@ -10,6 +10,10 @@ import ListIcon from '../../common/list-icon';
 import EventJoiner from '../event-joiner';
 import { GoingButton } from '../../common/going-button';
 import { IconContainer } from '../../common/icon-container';
+import { Avatar } from 'react-native-paper';
+import { useNavigation } from '@react-navigation/native';
+import { ProfileStackParams } from '../../navigation/profile-stack/type';
+import { TabParams } from '../../navigation/params';
 
 interface Props {
   item: EventType;
@@ -22,13 +26,30 @@ export default function EventCard({ item, onEventCardPressed }: Props) {
 
   const { user, description, title, address, date, id, joined, joinedUsers } = item;
 
+  const navigation = useNavigation();
+
   return (
     <TouchableOpacity style={styles.container} onPress={onEventCardPressed}>
       <View style={styles.main}>
-        <View style={styles.flex}>
-          <Image resizeMode="cover" style={styles.avatar} source={{ uri: user.image }} />
+        <Pressable
+          style={styles.flex}
+          onPress={() =>
+            // TODO:
+            // @ts-ignore
+            navigation.navigate(TabParams.profileStack, {
+              screen: ProfileStackParams.profile,
+              params: { user },
+            })
+          }>
+          <Image
+            resizeMode="cover"
+            style={styles.avatar}
+            source={{
+              uri: user.image,
+            }}
+          />
           <Text style={styles.username}> {user.name}</Text>
-        </View>
+        </Pressable>
         <IconContainer
           style={styles.iconContainer}
           onPress={toggleWatchButton}

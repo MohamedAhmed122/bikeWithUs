@@ -1,10 +1,11 @@
-import { StyleSheet, Text, View, Dimensions } from 'react-native';
+import { Text, View, Dimensions } from 'react-native';
 import React from 'react';
-// @ts-expect-error
-import GoogleStaticMap from 'react-native-google-static-map';
+
 import { events } from '../../../../data/events';
 import { ScaledSheet } from 'react-native-size-matters';
 import { theme } from '../../../../theme';
+import MapView, { Marker, PROVIDER_GOOGLE } from 'react-native-maps';
+import { MaterialIcons } from '@expo/vector-icons';
 
 const { width } = Dimensions.get('window');
 
@@ -19,13 +20,23 @@ export default function EventMap() {
       </View>
       <View style={{ alignItems: 'center' }}>
         <View style={styles.mapContainer}>
-          {/* <GoogleStaticMap
-            latitude={'54.6784'}
-            longitude={'25.2865'}
-            zoom={13}
-            size={{ width: width - 88, height: 150 }}
-            apiKey={'AIzaSyCOptNuaVLxKv49WuGT405-GuKTPNRvj9I'}
-          /> */}
+          <MapView
+            provider={PROVIDER_GOOGLE}
+            style={{ width: width - 88, height: 150 }}
+            region={{
+              latitude: 54.6784,
+              longitude: 25.2865,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
+            }}>
+            <Marker
+              coordinate={{
+                latitude: 54.6784,
+                longitude: 25.2865,
+              }}>
+              <MaterialIcons name="location-on" color="red" size={35} />
+            </Marker>
+          </MapView>
         </View>
       </View>
     </React.Fragment>

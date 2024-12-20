@@ -17,11 +17,7 @@ export const GoingButton: React.FC<Props> = ({ isGoing, toggleButton }) => {
       <Text style={[styles.text, [isGoing ? styles.going : styles.notGoing]]}>
         {isGoing ? 'Joined' : 'Going?'}
       </Text>
-      <AntDesign
-        name={isGoing ? 'like1' : 'dislike2'}
-        color={COLORS.primary}
-        size={20}
-      />
+      <AntDesign name={isGoing ? 'like1' : 'dislike2'} color={COLORS.primary} size={20} />
     </Pressable>
   );
 };

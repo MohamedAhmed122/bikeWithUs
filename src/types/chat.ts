@@ -1,10 +1,11 @@
+import { User } from './index';
 export type ChatList = {
   id: string;
-  name: string;
-  image: string;
+
   lastMsg: { msg?: string; photo?: string };
   unreadMsgs: number;
   lastMsgAt: Date;
+  user: User;
 };
 
 export type Message = {
@@ -13,9 +14,5 @@ export type Message = {
   sender: boolean;
   msg: { msg?: string; photo?: string };
   date: Date;
-  user: {
-    id: string;
-    name: string;
-    image: string;
-  };
+  user: User;
 };

@@ -1,4 +1,3 @@
-import { Text, View } from 'react-native';
 import React from 'react';
 import { ChatStackParams, ChatStackParamsList } from './type';
 import { createStackNavigator } from '@react-navigation/stack';

@@ -6,6 +6,9 @@ import { joinerStyles as styles } from './styles';
 import { User } from '../../types';
 import { AntDesign } from '@expo/vector-icons';
 import { theme } from '../../theme';
+import { useNavigation } from '@react-navigation/native';
+import { TabParams } from '../../navigation/params';
+import { ProfileStackParams } from '../../navigation/profile-stack/type';
 
 type Props = {
   joiners: User[];
@@ -23,6 +26,15 @@ export default function EventJoiner({
   joinersCounterDisplay = 5,
 }: Props) {
   const [joinersCountDisplay, setJoinersCountDisplay] = useState(joinersCounterDisplay);
+  const navigation = useNavigation();
+  const onAvatarPressed = (user: User) => {
+    // TODO:
+    // @ts-ignore
+    navigation.navigate(TabParams.profileStack, {
+      screen: ProfileStackParams.profile,
+      params: { user },
+    });
+  };
 
   const onShowMore = () =>
     showSeeAll &&
@@ -45,12 +57,16 @@ export default function EventJoiner({
         showsHorizontalScrollIndicator={false}>
         <View style={styles.avatarContainer}>
           {joiners.slice(0, joinersCountDisplay).map((item, index) => (
-            <Image
-              key={item.id}
-              source={{ uri: item.image }}
-              resizeMode="cover"
-              style={[styles.avatar, { marginLeft: index !== 0 ? -15 : 0, width: 45, height: 45 }]}
-            />
+            <Pressable key={item.id} onPress={() => onAvatarPressed(item)}>
+              <Image
+                source={{ uri: item.image }}
+                resizeMode="cover"
+                style={[
+                  styles.avatar,
+                  { marginLeft: index !== 0 ? -15 : 0, width: 45, height: 45 },
+                ]}
+              />
+            </Pressable>
           ))}
         </View>
         {joiners.length > joinersCountDisplay && (

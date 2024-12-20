@@ -5,19 +5,20 @@ import { theme } from '../../../theme';
 import { Avatar } from 'react-native-paper';
 import { MaterialIcons } from '@expo/vector-icons';
 import { ScaledSheet } from 'react-native-size-matters';
+import { User } from '../../../types';
 
-export default function ChatHeader() {
+export default function ChatHeader({ user }: { user?: User }) {
   const { top } = useSafeAreaInsets();
   return (
     <View style={[styles.container, { paddingTop: top ?? 20 }]}>
       <View style={styles.avatarContainer}>
         <Avatar.Image
           source={{
-            uri: 'https://st3.depositphotos.com/1007566/13175/v/450/depositphotos_131750410-stock-illustration-woman-female-avatar-character.jpg',
+            uri: user?.image,
           }}
           size={50}
         />
-        <Text style={styles.userName}>Mohamed Youssef</Text>
+        <Text style={styles.userName}>{user?.name}</Text>
       </View>
       <View style={styles.iconsContainer}>
         <MaterialIcons name="call" size={30} color="white" style={styles.icon} />

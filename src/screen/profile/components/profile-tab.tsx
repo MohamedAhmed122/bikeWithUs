@@ -24,14 +24,14 @@ const tabs = [
     tabName: 'Saved',
   },
 ];
-export default function Example() {
+export default function Example({ username }: { username: string }) {
   const [activeTab, setActiveTab] = useState<string>(tabs[0].tabKey);
 
   return (
     <>
       <Tab activeTab={activeTab} setActiveTab={setActiveTab} tabs={tabs} />
       {activeTab === ProfileTabsType.EVENT_TAB && <EventTab />}
-      {activeTab === ProfileTabsType.PHOTO_TAB && <PhotoTab />}
+      {activeTab === ProfileTabsType.PHOTO_TAB && <PhotoTab username={username} />}
       {activeTab === ProfileTabsType.SAVED_TAB && <SavedTab />}
     </>
   );

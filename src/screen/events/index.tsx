@@ -9,6 +9,7 @@ import FixedButton from '../../common/fixed-button';
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { EventStackParams, EventStackParamsList } from '../../navigation/event-stack/type';
 import { useNavigation } from '@react-navigation/native';
+import useStore from '../../hooks/useStore';
 
 const tabs = [
   {
@@ -26,6 +27,8 @@ export default function Events() {
   const [activeTab, setActiveTab] = useState(tabs[0].tabKey);
   const navigation = useNavigation<Navigation>();
 
+  const { bears, nuts, increasePopulation } = useStore();
+  console.log(bears, nuts, '===>bears');
   const onCreateButtonPressed = () => navigation.navigate(EventStackParams.createEvent);
 
   const onEventCardPressed = (id: string) =>

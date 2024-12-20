@@ -1,14 +1,15 @@
 import React from 'react';
-import { StyleProp, TextInput, TextInputProps, View, ViewStyle } from 'react-native';
+import { StyleProp, TextInput, TextInputProps, TextStyle, View, ViewStyle } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import styles from './styles';
 import { theme } from '../../theme';
 
-export interface AppTextInputProps extends TextInputProps {
+export interface AppTextInputProps extends Omit<TextInputProps, 'style'> {
   inputContainerStyle?: StyleProp<ViewStyle>;
   rightIconName?: keyof typeof AntDesign.glyphMap;
   leftIconName?: keyof typeof AntDesign.glyphMap;
   LeftIcon?: React.FC;
+  inputStyle?: StyleProp<TextStyle>;
 }
 
 export const AppInput: React.FC<AppTextInputProps> = ({

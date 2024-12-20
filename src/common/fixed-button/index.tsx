@@ -20,10 +20,10 @@ export default function FixedButton({ onPress }: { onPress(): void }) {
     rotation.value = withRepeat(
       withSequence(
         withTiming(360, { duration: 3000 }),
-        withDelay(3000, withTiming(0, { duration: 0 })),
+        withDelay(3000, withTiming(0, { duration: 0 }))
       ),
       -1,
-      false,
+      false
     );
   }, []);
 
@@ -35,11 +35,7 @@ export default function FixedButton({ onPress }: { onPress(): void }) {
 
   return (
     <View style={styles.container}>
-      <IconContainer
-        onPress={onPress}
-        color={theme.colors.primary}
-        style={styles.iconContainer}
-      >
+      <IconContainer onPress={onPress} color={theme.colors.primary} style={styles.iconContainer}>
         <Animated.View style={animatedStyle}>
           <Entypo name="plus" size={30} color={theme.colors.white} />
         </Animated.View>

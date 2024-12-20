@@ -7,7 +7,10 @@ import moment from 'moment';
 import ChatInbox from './components/chat-inbox';
 import ChatHeader from './components/chat-header';
 
-import Recorder from './Record';
+// import Recorder from './Record';
+import { users } from '../../data/users';
+import { NativeStackScreenProps } from '@react-navigation/native-stack';
+import { ChatStackParams, ChatStackParamsList } from '../../navigation/chat-stack/type';
 
 export interface ExtendMsg extends Message {
   showAvatar: boolean;
@@ -23,7 +26,10 @@ const preprocessMessages = (messages: Message[]) =>
     isSameDate: index === 0 || moment(arr[index - 1].date).isSame(message.date, 'day'),
   }));
 
-export default function Chat() {
+type Navigation = NativeStackScreenProps<ChatStackParamsList, ChatStackParams>;
+export default function Chat({ route }: Navigation) {
+  const user = route.params?.user;
+
   const flatListRef = useRef<FlatList>(null);
   const [chatMsgs, setChatMsgs] = useState<ExtendMsg[]>(() => preprocessMessages(messages));
 
@@ -47,12 +53,7 @@ export default function Chat() {
       sender: true,
       msg: { msg },
       date: new Date(),
-      user: {
-        id: 'u2',
-        name: 'Bob Smith',
-        image:
-          'https://media.istockphoto.com/id/1371797889/vector/young-smiling-man-avatar-3d-vector-people-character-illustration-cartoon-minimal-style-3d.jpg?s=612x612&w=0&k=20&c=WykJb6hyEUv8T9k86g-LG9u980sEwqK8FG1m1tXgnSI=',
-      },
+      user: users[0],
     };
     setChatMsgs((currentMsgs) => {
       const processedMessages = preprocessMessages([...currentMsgs, newMessage]);
@@ -70,7 +71,7 @@ export default function Chat() {
 
   return (
     <React.Fragment>
-      <ChatHeader />
+      <ChatHeader user={user} />
       <FlatList
         ref={flatListRef}
         keyExtractor={(item) => item.id}

@@ -1,3 +1,4 @@
+import { User } from './../../types/index';
 import { NO_PARAMS } from '../params';
 
 export enum ProfileStackParams {
@@ -15,7 +16,7 @@ export type ProfileStackParamsList = {
 
 // https://reactnavigation.org/docs/typescript/
 export type ProfileParamsList = {
-  profile: NO_PARAMS;
+  profile: { user: User };
   createProfile: NO_PARAMS;
   bike: { id: string };
   editProfile: NO_PARAMS;

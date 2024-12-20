@@ -1,22 +1,24 @@
-import { Text, View } from 'react-native';
 import React from 'react';
 import { MapStackParams, MapStackParamsList } from './type';
 import { createStackNavigator } from '@react-navigation/stack';
+import MapScreen from '../../screen/map';
+import MapDirection from '../../screen/map-direction';
 
 const Stack = createStackNavigator<MapStackParamsList>();
 
 export default function MapStack() {
   return (
     <Stack.Navigator>
-      <Stack.Screen name={MapStackParams.map} component={Map} />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name={MapStackParams.map}
+        component={MapScreen}
+      />
+      <Stack.Screen
+        options={{ headerShown: false }}
+        name={MapStackParams.mapDirections}
+        component={MapDirection}
+      />
     </Stack.Navigator>
-  );
-}
-
-function Map() {
-  return (
-    <View>
-      <Text>map-stack</Text>
-    </View>
   );
 }

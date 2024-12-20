@@ -11,6 +11,7 @@ import { ChatStackParams } from '../../../navigation/chat-stack/type';
 import { TabParams, TabParamsList } from '../../../navigation/params';
 import { ProfileStackParams } from '../../../navigation/profile-stack/type';
 import { theme } from '../../../theme';
+import { users } from '../../../data/users';
 
 type Navigation = NativeStackNavigationProp<TabParamsList, TabParams>;
 
@@ -27,7 +28,10 @@ export default function ProfileHeader() {
     Linking.openURL('https://www.instagram.com/mohameddesoukey98/');
 
   const onNavigateToChat = () =>
-    navigation.navigate(TabParams.chatStack, { screen: ChatStackParams.chat });
+    navigation.navigate(TabParams.chatStack, {
+      screen: ChatStackParams.chat,
+      params: { user: users[0] },
+    });
 
   return (
     <>

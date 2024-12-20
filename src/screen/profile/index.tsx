@@ -1,7 +1,7 @@
-import { Ionicons, Entypo } from '@expo/vector-icons';
-import { useNavigation } from '@react-navigation/native';
+import { Entypo } from '@expo/vector-icons';
+import { useFocusEffect, useIsFocused, useNavigation } from '@react-navigation/native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import React from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Linking,
   SafeAreaView,
@@ -10,18 +10,20 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { Avatar, Button, Card, Title, Text } from 'react-native-paper';
+import { Avatar, Button, Title, Text } from 'react-native-paper';
 
-import ProfileHeader from './components/profile-header';
 import TabViewExample from './components/profile-tab';
-import { ChatStackParams } from '../../navigation/chat-stack/type';
 import { TabParams } from '../../navigation/params';
 import { ProfileParamsList, ProfileStackParams } from '../../navigation/profile-stack/type';
 import { theme } from '../../theme';
+import { users } from '../../data/users';
+import { User } from '../../types';
 
 type ProfileType = NativeStackScreenProps<ProfileParamsList, 'profile'>;
 
-const Profile: React.FC<ProfileType> = ({ navigation }) => {
+const Profile: React.FC<ProfileType> = ({ navigation, route }) => {
+  const user = route.params?.user || users[12];
+
   const onEditProfile = React.useCallback(() => navigation.navigate('editProfile'), []);
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -31,8 +33,8 @@ const Profile: React.FC<ProfileType> = ({ navigation }) => {
           backgroundColor: 'white',
         }}
         showsVerticalScrollIndicator={false}>
-        <UserProfile onEditProfile={onEditProfile} />
-        <TabViewExample />
+        <UserProfile onEditProfile={onEditProfile} user={user} />
+        <TabViewExample username={user.username} />
       </ScrollView>
     </SafeAreaView>
   );
@@ -40,23 +42,20 @@ const Profile: React.FC<ProfileType> = ({ navigation }) => {
 
 interface UserProfileProps {
   onEditProfile(): void;
+  user: User;
 }
-const UserProfile: React.FC<UserProfileProps> = ({ onEditProfile }) => {
+const UserProfile: React.FC<UserProfileProps> = ({ onEditProfile, user }) => {
   return (
     <View style={styles.container}>
       <View style={styles.card}>
         <View style={styles.avatarSection}>
-          <Avatar.Image
-            size={80}
-            source={{ uri: 'https://images.unsplash.com/photo-1516802273409-68526ee1bdd6' }} // Replace with actual image link
-            style={styles.avatar}
-          />
+          <Avatar.Image size={80} source={{ uri: user.image }} style={styles.avatar} />
 
           <ProfileSocialLinks />
         </View>
         <View style={{ paddingBottom: 32 }}>
-          <Title style={styles.name}>Ahmed Hamed</Title>
-          <Text style={styles.bio}>Bio goes here...</Text>
+          <Title style={styles.name}>{user.username}</Title>
+          <Text style={styles.bio}>{user.bio}</Text>
         </View>
 
         <View style={styles.actions}>

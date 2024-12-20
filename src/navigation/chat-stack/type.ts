@@ -1,3 +1,4 @@
+import { User } from '../../types';
 import { NO_PARAMS } from '../params';
 
 export enum ChatStackParams {
@@ -7,5 +8,5 @@ export enum ChatStackParams {
 
 export type ChatStackParamsList = {
   [ChatStackParams.chatList]: NO_PARAMS;
-  [ChatStackParams.chat]: { id: string };
+  [ChatStackParams.chat]: { user: User };
 };

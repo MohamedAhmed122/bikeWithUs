@@ -1,6 +1,5 @@
 import { Text, View } from 'react-native';
 import React from 'react';
-import { Message } from '../../../types/chat';
 import { Avatar } from 'react-native-paper';
 import { theme } from '../../../theme';
 import { ScaledSheet } from 'react-native-size-matters';
@@ -80,7 +79,7 @@ const styles = ScaledSheet.create({
   },
   senderMessageContainer: {
     marginRight: '10@ms',
-    backgroundColor: theme.colors.lightGrey,
+    backgroundColor: theme.colors.lightGray,
     paddingHorizontal: '20@ms',
     paddingVertical: '9@mvs',
     borderTopLeftRadius: '15@ms',

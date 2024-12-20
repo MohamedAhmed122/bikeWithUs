@@ -37,7 +37,7 @@ export const tabs = [
     component: ReportStack,
     name: TabParams.reportStack,
     options: {
-      title: 'REPORT',
+      title: 'ASK',
       tabBarIcon: ({ color }: { color: string }) => (
         <MaterialIcons name="article" size={scale(27)} color={color} />
       ),

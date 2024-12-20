@@ -15,10 +15,10 @@ type Props = {
 export default function ChatUser({ item, onPress }: Props) {
   return (
     <Pressable onPress={onPress} style={styles.container}>
-      <Avatar.Image source={{ uri: item.image }} size={60} />
+      <Avatar.Image source={{ uri: item.user.image }} size={60} />
       <View style={styles.innerContainer}>
         <View style={styles.nameMessageContainer}>
-          <Text style={styles.nameText}>{item.name}</Text>
+          <Text style={styles.nameText}>{item.user.name}</Text>
           <View style={{ flexDirection: 'row' }}>
             {!!item.lastMsg.photo && (
               <View style={styles.imageIcon}>
